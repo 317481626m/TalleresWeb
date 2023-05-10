@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang = "es">
+    <head>
+        <meta charset="utf-8"/>
+        <title> Taller #2 </title>
+        <meta name="description" content="Esta pagina web es el desarrollo del taller #2 de Programacion Web."/>
+        <meta name="author" content="Miguel"/>
+        <meta name="keywords" content="Mi primer pagina, mi primer titulo"/>
+    </head>
+
+    <body>
+        <form action="principal.html" method="post">
+            <b>Rellena tu CV</b><br><br>
+
+            Nombre<br>
+            <input type="text" name="nombre" value="" /><br>
+
+            Apellidos<br>
+            <input type="text" name="apellidos" value="" /><br>
+
+            Contraseña<br>
+            <input type="password" name="contraseña" value="" /><br>
+
+            Confirme Contraseña<br>
+            <input type="password name="confirmarcontraseña" value="" /><br>
+            Idintificacion<br>
+
+            <select> 
+            <option>--Selecciona--</option>
+            <option>TI</option>
+            <option>CC</option>
+            <option>CE</option>
+            <option>Otro</option>
+            </select>
+            <input type="text" name="id" value="" /><br>
+            <p>
+            Sexo <br>
+            <input type="radio" id="opcion1" name="opciones" value="opcion1">
+            <label for="opcion1">Hombre</label><br>
+            <input type="radio" id="opcion2" name="opciones" value="opcion2">
+            <label for="opcion2">Mujer</label><br>
+
+
+            </p>
+
+            Incluir mi foto<br>
+            <p>
+            <label for="uploads"></label>
+            <input
+              type="file"
+              id="uploads"
+              name="uploads"
+              accept=".jpg, .jpeg, .png, .svg, .gif"
+              multiple
+            />
+          </p>
+            <input type="checkbox" id="checkbox" name="checkbox" value="si">
+            <label for="checkbox">Estudiante.....</label>
+            <br>
+
+        
+            <fieldset>
+                <legend>Datos personales</legend>
+                <b>Departamento</b><br>
+                <select> 
+                    <option>--Selecciona--</option>
+                    <option>Enero</option>
+                    <option>Febrero</option>
+                    <option>Marzo</option>
+                    <option>Abril</option>
+                    <option>Mayo</option>
+                    <option>Junio</option>
+                    <option>Julio</option>
+                    <option>Agosto</option>
+                    <option>Septiembre</option>
+                    <option>Octubrebre</option>
+                    <option>Noviembre</option>
+                    <option>Diciembre</option>
+                </select>
+                <br>
+                <br>
+                <b>Fecha de nacimiento</b> <br>
+                <input type="text" name="dia" value="" />
+                 de 
+                 <select name = "" id="" class="meses"> 
+                    <option>--Selecciona--</option>
+                    <option>Enero</option>
+                    <option>Febrero</option>
+                    <option>Marzo</option>
+                    <option>Abril</option>
+                    <option>Mayo</option>
+                    <option>Junio</option>
+                    <option>Julio</option>
+                    <option>Agosto</option>
+                    <option>Septiembre</option>
+                    <option>Octubrebre</option>
+                    <option>Noviembre</option>
+                    <option>Diciembre</option>
+                </select>
+                 de
+                <input type="text" name="año" value="" />
+                <br>
+                <b></b>Temas de interes</b><br>
+                <textarea>
+
+                </textarea>
+            </fieldset>
+            <br>
+
+            <input type="submit" name="enviar" value="Guardar cambios" />
+            <input type="reset" name="limpiar" value="Borrar los datos introducidos" />
+        </form>
+                <br>
+                <br><br>
+                <a href="principal.html"><b>Volver</b></a>
+    </body>
+</html>
+

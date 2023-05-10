@@ -1,0 +1,108 @@
+body {
+    margin: 0;
+    color:white;
+  }
+
+  .container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: url(imagenes/TL-Kitkalos.png) center;
+    background-size: cover;
+    height: 100vh;
+
+  }
+
+  .derecha{
+    background: linear-gradient(rgb(10, 109, 174), rgba(36, 6, 187, 0.441));
+    display: grid;
+    place-items: center;
+    text-align: center;
+  }
+
+  input[type="text"], input[type="email"], textarea, input[type="password"]{
+    max-width: 80%;
+    width: 150px;
+    padding: 3px;
+    margin: 3%;
+    font-size: large;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 4px linear-gradient(rgba(25, 91, 135, 0.684), rgb(86, 173, 232));
+  }
+
+
+  input[type="submit"]{
+    max-width: 80%;
+    width: 150px;
+    padding: 3px;
+    margin: 3%;
+    font-size: large;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 4px linear-gradient(rgba(25, 91, 135, 0.684), rgb(86, 173, 232));
+  }
+
+  textarea{
+    max-width: 80%;
+    height: 118px;
+    width: 150px;
+    padding: 3px;
+    margin: 3%;
+    font-size: large;
+    margin-bottom: 10px;
+    border-radius: 10px;
+  }
+
+select{
+  max-width: 80%;
+  width: 150px;
+  padding: 3px;
+  margin: 3%;
+  font-size: large;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border: 4px linear-gradient(rgba(25, 91, 135, 0.684), rgb(86, 173, 232));
+}
+
+.izq{
+  float: left;
+	margin-left: 0px;
+  border: 1px solid #000;
+  width: 48%;
+  clear: both;
+	margin-left: 0;
+  border: 1px solid;
+}
+
+.der{
+  float: right;
+	margin-right: 0px;
+  width: 48%;
+  border: 1px solid;
+}
+
+  button{
+    max-width: 80%;
+    width: 150px;
+    padding: 3px;
+    margin: 3%;
+    font-size: large;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 4px linear-gradient(rgba(25, 91, 135, 0.684), rgb(86, 173, 232));
+  }
+  h1{
+    font-size: x-large;
+    color: white;
+    text-align: center;
+    position:static;
+  }
+
+  .formulario {
+    grid-column: 2;
+    grid-row: 2;
+    max-width: 100%; /* ajusta el ancho máximo del formulario */
+    margin: 0 auto; /* centra el formulario horizontalmente */
+  }
+
+

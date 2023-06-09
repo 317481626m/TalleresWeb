@@ -102,4 +102,17 @@ select{
     margin: 0 auto; /* centra el formulario horizontalmente */
   }
 
+  .container {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 20px;
+  }
 
+  .container h2 {
+    margin-top: 0;
+  }
+
+  .radio-group label {
+    display: block;
+    margin-bottom: 10px;
+  }

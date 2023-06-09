@@ -1,0 +1,94 @@
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #f8f8f8;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Estilos para los campos de entrada de texto */
+  input[type="text"], input[type="email"], textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: none;
+    background-color: #f2f2f2;
+    border-radius: 6px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Estilos para el botón de enviar */
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+
+  /* Estilos para las etiquetas de los campos */
+  label {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 6px;
+  }
+
+  .container {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 20px;
+  }
+
+  .container h2 {
+    margin-top: 0;
+  }
+
+  .radio-group label {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .radio-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .radio-dropdown input[type="radio"] {
+    display: none;
+  }
+
+  .radio-dropdown .radio-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    display: none;
+    background-color: #f9f9f9;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .radio-dropdown input[type="radio"] + label {
+    display: block;
+    cursor: pointer;
+  }
+
+  .radio-dropdown input[type="radio"]:checked + label {
+    font-weight: bold;
+  }
+
+  .radio-dropdown input[type="radio"]:checked + label::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px;
+  }

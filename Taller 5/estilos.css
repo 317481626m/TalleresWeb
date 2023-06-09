@@ -46,49 +46,67 @@ form {
     padding: 20px;
   }
 
-  .container h2 {
+  body {
+    background-color: #f5f5f5;
+    color: #333;
+    font-family: Arial, sans-serif;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    color: #007bff;
+    font-size: 24px;
     margin-top: 0;
   }
-
-  .radio-group label {
+  
+  form {
+    margin-top: 20px;
+  }
+  
+  label {
     display: block;
-    margin-bottom: 10px;
-  }
-
-  .radio-dropdown {
-    position: relative;
-    display: inline-block;
-  }
-
-  .radio-dropdown input[type="radio"] {
-    display: none;
-  }
-
-  .radio-dropdown .radio-options {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1;
-    display: none;
-    background-color: #f9f9f9;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-
-  .radio-dropdown input[type="radio"] + label {
-    display: block;
-    cursor: pointer;
-  }
-
-  .radio-dropdown input[type="radio"]:checked + label {
+    margin-bottom: 8px;
     font-weight: bold;
   }
-
-  .radio-dropdown input[type="radio"]:checked + label::after {
-    content: '\25BC';
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 5px;
+  
+  input[type="text"],
+  input[type="email"],
+  select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+  }
+  
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  select:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  button {
+    display: inline-block;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
   }

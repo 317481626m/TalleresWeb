@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Formulario de Usuario</h2>
+    <form action="#" method="POST" id="userForm">
+      <label for="username">Nombre de usuario:</label>
+      <input type="text" id="username" name="username" required><br><br>
+      
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" required><br><br>
+      
+      <label for="phone">Número de teléfono:</label>
+      <input type="tel" id="phone" name="phone" required><br><br>
+      
+      <label for="likes">Gustos:</label><br>
+      <input type="text" id="likes" name="likes" required><br><br>
+      
+      <input type="submit" value="Enviar">
+    </form>
+  
+    <h2>Gustos Registrados</h2>
+    <table id="gustos-table">
+      <thead>
+        <tr>
+          <th>Gustos</th>
+        </tr>
+      </thead>
+      <tbody id="gustos-registrados"></tbody>
+    </table>
+  
+    <script>
+      const form = document.getElementById('userForm');
+      const gustosTable = document.getElementById('gustos-table');
+      const gustosRegistrados = document.getElementById('gustos-registrados');
+  
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+  
+        const gustosInput = document.getElementById('likes');
+        const gustos = gustosInput.value.trim();
+  
+        if (gustos !== '') {
+          const gustosArray = gustos.split(',');
+          gustosArray.forEach(function(gusto) {
+            const row = document.createElement('tr');
+            const cell = document.createElement('td');
+            cell.textContent = gusto.trim();
+            row.appendChild(cell);
+            gustosRegistrados.appendChild(row);
+          });
+        }
+  
+      });
+    </script>
+</body>
+</html>

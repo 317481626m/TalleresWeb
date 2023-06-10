@@ -4,176 +4,171 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-      table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-  
-      th,
-      td {
-        padding: 8px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-      }
-  
-      th {
-        background-color: #f2f2f2;
-      }
-    </style>
+        <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
   
   <body>
-    <form id="userForm">
-      <label for="username">Nombre de usuario:</label>
-      <input type="text" id="username" name="username" required><br><br>
+    <div class="container">
+      <form id="userForm">
+        <label for="username">Nombre de usuario:</label>
+        <input type="text" id="username" name="username" required><br><br>
+    
+        <label for="email">Correo:</label>
+        <input type="email" id="email" name="email" required><br><br>
+    
+        <label for="phone">Número de teléfono:</label>
+        <input type="tel" id="phone" name="phone" required><br><br>
+    
+        <label for="likes">Gustos:</label>
+        <input type="text" id="likes" name="likes" required><br><br>
+    
+        <button type="submit">Guardar</button>
+      </form>
+    
+      <h2>Gustos Registrados</h2>
+      <table id="gustos-table">
+        <thead>
+          <tr>
+            <th>Gustos</th>
+            <th>Porcentaje (%)</th>
+            <th onclick="mostrarBotones">Editar</th>
+          </tr>
+        </thead>
+        <tbody id="gustos-registrados"></tbody>
+      </table>
+    
+    
+      <div id="cambios">
+        <p style="display: none;" id="advertencia"> Pulse Aceptar para guardar los cambios o Cancelar para anularlos</p>
+        <button id="aceptar-btn" style="display: none;">Aceptar</button>
+        <button id="cancelar-btn" style="display: none;">Cancelar</button>
+      </div>
+    
+      <script>
   
-      <label for="email">Correo:</label>
-      <input type="email" id="email" name="email" required><br><br>
+        const gustosTable = document.getElementById('gustos-table');
+        const gustosRegistrados = document.getElementById('gustos-registrados');
+        const edicionTexto = document.getElementById('edicion-texto');
+        const cambiosDiv = document.getElementById('cambios');
+        const aceptarBtn = document.getElementById('aceptar-btn');
+        const cancelarBtn = document.getElementById('cancelar-btn');
   
-      <label for="phone">Número de teléfono:</label>
-      <input type="tel" id="phone" name="phone" required><br><br>
+        let edicionActiva = false;
+        let filaEditada = null;
+    
+        
+        function agregarGusto(gusto, porcentaje = '0%') {
+          const row = document.createElement('tr');
+    
+          const gustoCell = document.createElement('td');
+          gustoCell.textContent = gusto;
+          row.appendChild(gustoCell);
+    
+          const porcentajeCell = document.createElement('td');
+          porcentajeCell.textContent = porcentaje;
+          row.appendChild(porcentajeCell);
+    
+          const editarCell = document.createElement('td');
+          const editarTexto = document.createElement('span');
+          editarTexto.textContent = 'Editar';
+          editarCell.appendChild(editarTexto);
+          row.appendChild(editarCell);
+    
+          gustosRegistrados.appendChild(row);
+    
+          editarTexto.addEventListener('click', function() {
+            habilitarEdicion(row);
+          });
+        }
+    
+        function habilitarEdicion(fila) {
+          if (edicionActiva) {
+            return;
+          }
+          aceptarBtn.style.display = 'inline-block';
+          cancelarBtn.style.display = 'inline-block';
   
-      <label for="likes">Gustos:</label>
-      <input type="text" id="likes" name="likes" required><br><br>
+          const gustoCell = fila.querySelector('td:first-child');
+          const porcentajeCell = fila.querySelector('td:nth-child(2)');
+          const editarTexto = fila.querySelector('td:last-child span');
+    
+          const gustoAnterior = gustoCell.textContent;
+          const porcentajeAnterior = porcentajeCell.textContent;
+    
+          gustoCell.textContent = '';
+          porcentajeCell.textContent = '';
   
-      <button type="submit">Guardar</button>
-    </form>
+          const inputGusto = document.createElement('input');
+          inputGusto.type = 'text';
+          inputGusto.value = gustoAnterior;
+          gustoCell.appendChild(inputGusto);
+    
+          const inputPorcentaje = document.createElement('input');
+          inputPorcentaje.type = 'text';
+          inputPorcentaje.value = porcentajeAnterior;
+          porcentajeCell.appendChild(inputPorcentaje);
   
-    <h2>Gustos Registrados</h2>
-    <table id="gustos-table">
-      <thead>
-        <tr>
-          <th>Gustos</th>
-          <th>Porcentaje (%)</th>
-          <th>Editar</th>
-        </tr>
-      </thead>
-      <tbody id="gustos-registrados"></tbody>
-    </table>
-  
-    <p id="edicion-texto" style="display: none;">
-      En Edición
-    </p>
-  
-    <div id="cambios">
-      <p>Pulse Aceptar para guardar los cambios o Cancelar para anularlos</p>
-      <button id="aceptar-btn">Aceptar</button>
-      <button id="cancelar-btn">Cancelar</button>
-    </div>
-  
-    <script>
-      const gustosTable = document.getElementById('gustos-table');
-      const gustosRegistrados = document.getElementById('gustos-registrados');
-      const edicionTexto = document.getElementById('edicion-texto');
-      const cambiosDiv = document.getElementById('cambios');
-      let edicionActiva = false;
-      let filaEditada = null;
-  
-      function agregarGusto(gusto, porcentaje = '0%') {
-        const row = document.createElement('tr');
-  
-        const gustoCell = document.createElement('td');
-        gustoCell.textContent = gusto;
-        row.appendChild(gustoCell);
-  
-        const porcentajeCell = document.createElement('td');
-        porcentajeCell.textContent = porcentaje;
-        row.appendChild(porcentajeCell);
-  
-        const editarCell = document.createElement('td');
-        const editarTexto = document.createElement('span');
-        editarTexto.textContent = 'Editar';
-        editarCell.appendChild(editarTexto);
-        row.appendChild(editarCell);
-  
-        gustosRegistrados.appendChild(row);
-  
-        editarTexto.addEventListener('click', function() {
-          habilitarEdicion(row);
+          editarTexto.textContent = 'En Edición';
+          editarTexto.removeEventListener('click', function() {
+            habilitarEdicion(fila);
+          });
+    
+          mostrarTextoEdicion();
+          filaEditada = fila;
+        }
+    
+        function mostrarTextoEdicion() {
+          edicionTexto.style.display = 'block';
+          cambiosDiv.style.display = 'block';
+          edicionActiva = true;
+        }
+    
+        function ocultarTextoEdicion() {
+          edicionTexto.style.display = 'none';
+          cambiosDiv.style.display = 'none';
+          edicionActiva = false;
+        }
+    
+        const gustoInput = document.getElementById('likes');
+        const form = document.getElementById('userForm');
+    
+        form.addEventListener('submit', function(event) {
+          event.preventDefault();
+    
+          const gusto = gustoInput.value.trim();
+    
+          if (gusto !== '') {
+            agregarGusto(gusto);
+            gustoInput.value = '';
+          }
         });
-      }
+    
   
-      function habilitarEdicion(fila) {
-        if (edicionActiva) {
-          return;
-        }
+    
+        aceptarBtn.addEventListener('click', function() {
+          if (filaEditada) {
+            const gustoCell = filaEditada.querySelector('td:first-child');
+            const porcentajeCell = filaEditada.querySelector('td:nth-child(2)');
+            const inputGusto = gustoCell.querySelector('input');
+            const inputPorcentaje = porcentajeCell.querySelector('input');
+            
+    
+            const nuevoGusto = inputGusto.value;
+            const nuevoPorcentaje = inputPorcentaje.value;
+    
+            gustoCell.textContent = nuevoGusto;
+            porcentajeCell.textContent = nuevoPorcentaje;
   
-        const gustoCell = fila.querySelector('td:first-child');
-        const porcentajeCell = fila.querySelector('td:nth-child(2)');
-        const editarTexto = fila.querySelector('td:last-child span');
+            ocultarTextoEdicion();
+            filaEditada = null;
+          }
   
-        const gustoAnterior = gustoCell.textContent;
-        const porcentajeAnterior = porcentajeCell.textContent;
+          aceptarBtn.style.display = 'none';
+          cancelarBtn.style.display = 'none';
   
-        gustoCell.textContent = '';
-        porcentajeCell.textContent = '';
-
-        const inputGusto = document.createElement('input');
-        inputGusto.type = 'text';
-        inputGusto.value = gustoAnterior;
-        gustoCell.appendChild(inputGusto);
-  
-        const inputPorcentaje = document.createElement('input');
-        inputPorcentaje.type = 'text';
-        inputPorcentaje.value = porcentajeAnterior;
-        porcentajeCell.appendChild(inputPorcentaje);
-
-        editarTexto.textContent = 'En Edición';
-        editarTexto.removeEventListener('click', function() {
-          habilitarEdicion(fila);
         });
-  
-        mostrarTextoEdicion();
-        filaEditada = fila;
-      }
-  
-      function mostrarTextoEdicion() {
-        edicionTexto.style.display = 'block';
-        cambiosDiv.style.display = 'block';
-        edicionActiva = true;
-      }
-  
-      function ocultarTextoEdicion() {
-        edicionTexto.style.display = 'none';
-        cambiosDiv.style.display = 'none';
-        edicionActiva = false;
-      }
-  
-      const gustoInput = document.getElementById('likes');
-      const form = document.getElementById('userForm');
-  
-      form.addEventListener('submit', function(event) {
-        event.preventDefault();
-  
-        const gusto = gustoInput.value.trim();
-  
-        if (gusto !== '') {
-          agregarGusto(gusto);
-          gustoInput.value = '';
-        }
-      });
-  
-      const aceptarBtn = document.getElementById('aceptar-btn');
-      const cancelarBtn = document.getElementById('cancelar-btn');
-  
-      aceptarBtn.addEventListener('click', function() {
-        if (filaEditada) {
-          const gustoCell = filaEditada.querySelector('td:first-child');
-          const gustoCell = filaEditada.querySelector('td:first-child');
-          const inputGusto = gustoCell.querySelector('input');
-          const inputPorcentaje = porcentajeCell.querySelector('input');
-          
-  
-          const nuevoGusto = inputGusto.value;
-  
-          gustoCell.textContent = nuevoGusto;
-          ocultarTextoEdicion();
-          filaEditada = null;
-        }
-      });
-  
-      cancelarBtn.addEventListener('click', function() {
+    
+        cancelarBtn.addEventListener('click', function() {
         if (filaEditada) {
           const gustoCell = filaEditada.querySelector('td:first-child');
           const editarTexto = filaEditada.querySelector('td:last-child span');
@@ -182,10 +177,23 @@
   
           gustoCell.textContent = gustoAnterior;
           editarTexto.textContent = 'Editar';
+  
           ocultarTextoEdicion();
           filaEditada = null;
+  
         }
+          gustosRegistrados.innerHTML = '';
+          porcentaje.innerHTML = '';
+          aceptarBtn.style.display = 'none';
+          cancelarBtn.style.display = 'none';
+          form.reset();
+  
+        
       });
-    </script>
+  
+      </script>
+
+    </div>
+    
 </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    
   </head>
 
   <body>
@@ -40,7 +40,7 @@
     
     
       <div id="cambios">
-        <p style="display: none;" id="advertencia"> Pulse Aceptar para guardar los cambios o Cancelar para anularlos</p>
+        <p id="advertencia" style="display: none;" > Pulse Aceptar para guardar los cambios o Cancelar para anularlos</p>
         <button id="aceptar-btn" style="display: none;">Aceptar</button>
         <button id="cancelar-btn" style="display: none;">Cancelar</button>
       </div>
@@ -48,14 +48,14 @@
 
     <script>
       const gustosTable = document.getElementById('gustos-table');
-const gustosRegistrados = document.getElementById('gustos-registrados');
-const edicionTexto = document.getElementById('edicion-texto');
-const cambiosDiv = document.getElementById('cambios');
-const aceptarBtn = document.getElementById('aceptar-btn');
-const cancelarBtn = document.getElementById('cancelar-btn');
+      const gustosRegistrados = document.getElementById('gustos-registrados');
+      const edicionTexto = document.getElementById('edicion-texto');
+      const cambiosDiv = document.getElementById('cambios');
+      const aceptarBtn = document.getElementById('aceptar-btn');
+      const cancelarBtn = document.getElementById('cancelar-btn');
 
-let edicionActiva = false;
-let filaEditada = null;
+    let edicionActiva = false;
+    let filaEditada = null;
 
 
 function agregarGusto(gusto, porcentaje = '0%') {
@@ -88,6 +88,7 @@ function habilitarEdicion(fila) {
   }
   aceptarBtn.style.display = 'inline-block';
   cancelarBtn.style.display = 'inline-block';
+  advertencia.style.display = 'inline-block';
 
   const gustoCell = fila.querySelector('td:first-child');
   const porcentajeCell = fila.querySelector('td:nth-child(2)');
@@ -131,7 +132,7 @@ form.addEventListener('submit', function(event) {
   }
 });
 
-aceptarBtn.addEventListener('click', function() {
+aceptar-btn.addEventListener('click', function() {
   if (filaEditada) {
     const gustoCell = filaEditada.querySelector('td:first-child');
     const porcentajeCell = filaEditada.querySelector('td:nth-child(2)');
@@ -146,31 +147,29 @@ aceptarBtn.addEventListener('click', function() {
     window.location.href = url;
   }
 
-  aceptarBtn.style.display = 'none';
-  cancelarBtn.style.display = 'none';
 });
 
 cancelarBtn.addEventListener('click', function() {
-if (filaEditada) {
-  const gustoCell = filaEditada.querySelector('td:first-child');
-  const editarTexto = filaEditada.querySelector('td:last-child span');
+        if (filaEditada) {
+          const gustoCell = filaEditada.querySelector('td:first-child');
+          const editarTexto = filaEditada.querySelector('td:last-child span');
 
-  const gustoAnterior = gustoCell.textContent;
+          const gustoAnterior = gustoCell.textContent;
 
-  gustoCell.textContent = gustoAnterior;
-  editarTexto.textContent = 'Editar';
+          gustoCell.textContent = gustoAnterior;
+          editarTexto.textContent = 'Editar';
 
-  ocultarTextoEdicion();
-  filaEditada = null;
+          ocultarTextoEdicion();
+          filaEditada = null;
 
-}
-  gustosRegistrados.innerHTML = '';
-  porcentaje.innerHTML = '';
-  aceptarBtn.style.display = 'none';
-  cancelarBtn.style.display = 'none';
-  form.reset();
+        }
+          gustosRegistrados.innerHTML = '';
+          porcentaje.innerHTML = '';
+          aceptarBtn.style.display = 'none';
+          cancelarBtn.style.display = 'none';
+          form.reset();
+      });
 
-});
 </script>
 
 </body>

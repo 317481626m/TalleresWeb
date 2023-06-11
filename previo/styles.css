@@ -1,13 +1,91 @@
-table {
-  margin-top: 20px;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Estilo para el formulario */
+#userForm {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 300px;
+}
+
+#userForm input[type="text"] {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+#userForm button {
+  padding: 5px 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* Estilo para la tabla */
+#gustos-table {
   border-collapse: collapse;
+  width: 100%;
+  max-width: 300px;
 }
 
-th, td {
+#gustos-table td, #gustos-table th {
+  border: 1px solid #ddd;
   padding: 8px;
-  border: 1px solid black;
+  text-align: center;
 }
 
-.editando {
-  color: gray;
+#gustos-table th {
+  background-color: #f2f2f2;
+}
+
+#gustos-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#gustos-table tr:hover {
+  background-color: #ddd;
+}
+
+/* Estilo para los botones */
+#aceptar-btn,
+#cancelar-btn {
+  display: none;
+  margin-right: 10px;
+  padding: 5px 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#aceptar-btn:hover,
+#cancelar-btn:hover {
+  background-color: #45a049;
+}
+
+/* Estilo para el texto de edición */
+#edicion-texto {
+  display: none;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Estilo para el contenedor de cambios */
+#cambios {
+  display: none;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Estilo para el texto de confirmación */
+#confirmacion-texto {
+  text-align: center;
+  margin-bottom: 10px;
 }
